@@ -1,0 +1,7 @@
+.env
+research/raw/
+*.zip
+extracted/
+__pycache__/
+*.pyc
+.streamlit/credentials.toml
