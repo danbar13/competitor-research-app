@@ -7,9 +7,12 @@ ENV_PATH = BASE_DIR / ".env"
 RESEARCH_DIR = BASE_DIR / "research"
 RAW_DIR = RESEARCH_DIR / "raw"
 
-# Ensure directories exist
-RESEARCH_DIR.mkdir(parents=True, exist_ok=True)
-RAW_DIR.mkdir(parents=True, exist_ok=True)
+# Ensure directories exist if filesystem allows
+try:
+    RESEARCH_DIR.mkdir(parents=True, exist_ok=True)
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+except Exception:
+    pass
 
 def get_apify_token() -> str:
     """Retrieve the Apify API token from .env or environment variable."""

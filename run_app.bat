@@ -11,6 +11,6 @@ echo האפליקציה תיפתח בדפדפן בכתובת: http://localhost:8
 echo כדי לעצור את האפליקציה, סגור חלון זה.
 echo.
 
-python -m streamlit run app.py --browser.gatherUsageStats false
+python -m streamlit run streamlit_app.py --browser.gatherUsageStats false
 
 pause

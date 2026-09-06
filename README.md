@@ -41,16 +41,25 @@ APIFY_TOKEN=your_apify_token_here
 ```
 3. הפעל את האפליקציה:
 ```bash
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 הדפדפן ייפתח בכתובת: `http://localhost:8501`
+
+---
+
+## 🌐 פריסה בענן (Vercel & Streamlit Cloud)
+* **Vercel:** האפליקציה כוללת מתאם Serverless FastAPI ודשבורד מובנה בנתיב `api/index.py` ומוכנה לפריסה בלחיצה אחת ב-Vercel.
+* **Streamlit Cloud:** ניתן לחבר ישירות ל-GitHub ולהגדיר את `streamlit_app.py` כקובץ הראשי.
 
 ---
 
 ## 📂 מבנה הפרויקט
 
 ```text
-├── app.py                      # ממשק המשתמש (Streamlit RTL UI)
+├── streamlit_app.py            # ממשק המשתמש השולחני (Streamlit RTL UI)
+├── api/
+│   └── index.py                # שרת Serverless ודשבורד ענן (FastAPI / Vercel)
+├── vercel.json                 # הגדרות ניתוב לפריסה ב-Vercel
 ├── run_app.bat                 # קובץ הפעלה מהיר בלחיצה כפולה (Windows)
 ├── requirements.txt            # רשימת התלויות
 ├── core/

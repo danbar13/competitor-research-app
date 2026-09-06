@@ -1,5 +1,5 @@
 .env
-research/raw/
+research/
 *.zip
 extracted/
 __pycache__/

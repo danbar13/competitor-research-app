@@ -62,11 +62,14 @@ def scrape_linkedin_profiles(urls: List[str], token: str) -> List[Dict[str, Any]
                 body = response.read().decode("utf-8")
                 data = json.loads(body)
                 
-                # Save raw output
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                raw_path = RAW_DIR / f"profiles_{timestamp}.json"
-                with open(raw_path, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
+                # Save raw output if filesystem is writable
+                try:
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    raw_path = RAW_DIR / f"profiles_{timestamp}.json"
+                    with open(raw_path, "w", encoding="utf-8") as f:
+                        json.dump(data, f, ensure_ascii=False, indent=2)
+                except Exception:
+                    pass
                     
                 return data
             else:
@@ -110,10 +113,13 @@ def scrape_linkedin_posts(urls: List[str], max_posts: int = 5, token: str = "") 
                 body = response.read().decode("utf-8")
                 data = json.loads(body)
                 
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                raw_path = RAW_DIR / f"posts_{timestamp}.json"
-                with open(raw_path, "w", encoding="utf-8") as f:
-                    json.dump(data, f, ensure_ascii=False, indent=2)
+                try:
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    raw_path = RAW_DIR / f"posts_{timestamp}.json"
+                    with open(raw_path, "w", encoding="utf-8") as f:
+                        json.dump(data, f, ensure_ascii=False, indent=2)
+                except Exception:
+                    pass
                     
                 return data
             else:
